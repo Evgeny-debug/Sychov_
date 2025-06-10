@@ -66,10 +66,11 @@ const typingEffect = (el, text, speed = 60) => {
 document.addEventListener('DOMContentLoaded', () => {
   // Создание адаптивной кнопки Telegram
   const telegramBtn = document.createElement('a');
-  telegramBtn.href = "t.me/vanek_nikolaev";
+  telegramBtn.href = 'https://t.me/vanek_nikolaev';
   telegramBtn.className = 'floating-telegram-btn';
   telegramBtn.innerHTML = '📨 Заказать в Telegram';
-  document.body.appendChild(telegramBtn);
+  telegramBtn.target = '_blank';
+document.body.appendChild(telegramBtn);
   const title = document.querySelector('.title');
   const icon = document.createElement('span');
   icon.textContent = '👁‍🗨';
