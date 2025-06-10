@@ -64,6 +64,12 @@ const typingEffect = (el, text, speed = 60) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Создание адаптивной кнопки Telegram
+  const telegramBtn = document.createElement('a');
+  telegramBtn.href = 'https://evgeny-debug.github.io/Sychov_/#reviews';
+  telegramBtn.className = 'floating-telegram-btn';
+  telegramBtn.innerHTML = '📨 Заказать в Telegram';
+  document.body.appendChild(telegramBtn);
   const title = document.querySelector('.title');
   const icon = document.createElement('span');
   icon.textContent = '👁‍🗨';
