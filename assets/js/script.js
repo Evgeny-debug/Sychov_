@@ -25,18 +25,19 @@ const magneticHover = (selector) => {
 magneticHover('.btn');
 magneticHover('.logo');
 
-// Добавим звук клика клавиши
-const clickSound = new Audio('assets/img/sound.mp3');
-  clickSound.volume = 0.3;
-
-const addClickSound = (selector) => {
+// Виброотклик вместо звука клика
+const addHapticFeedback = (selector) => {
   document.querySelectorAll(selector).forEach(el => {
     el.addEventListener('click', () => {
-      clickSound.currentTime = 0;
-      clickSound.play();
+      if (navigator.vibrate) {
+        navigator.vibrate(15); // лёгкая вибрация
+      }
     });
   });
 };
+
+addHapticFeedback('.btn');
+addHapticFeedback('nav a');
 
 addClickSound('.btn');
 addClickSound('nav a');
