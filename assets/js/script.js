@@ -27,7 +27,8 @@ magneticHover('.logo');
 
 // Добавим звук клика клавиши
 const clickSound = new Audio('assets/img/sound.mp3');
-clickSound.volume = 0.3;
+  clickSound.volume = 0.3;
+
 const addClickSound = (selector) => {
   document.querySelectorAll(selector).forEach(el => {
     el.addEventListener('click', () => {
