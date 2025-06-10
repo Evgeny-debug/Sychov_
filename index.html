@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlackTrace | Восстановление переписок</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script defer src="assets/js/script.js"></script>
+</head>
+<body>
+  <!-- Экран выбора -->
+  <div class="intro-overlay" id="introOverlay">
+    <div class="intro-content">
+      <h1>Добро пожаловать в BlackTrace</h1>
+      <p>Выберите действие:</p>
+      <div class="buttons">
+        <a href="https://t.me/yourgroup" target="_blank" class="btn">Перейти в Telegram</a>
+        <button class="btn outline" onclick="closeIntro()">Остаться на сайте</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay"></div>
+  <header class="header">
+    <img src="assets/img/logo.png" alt="Логотип" class="logo" />
+    <nav class="nav" id="navMenu">
+      <a href="#home">Главная</a>
+      <a href="#services">Услуги</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="https://t.me/yourgroup" target="_blank">Telegram</a>
+    </nav>
+    <div class="burger" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <main class="container" id="home">
+    <h1 class="title">👁‍🗨 BlackTrace</h1>
+    <p class="subtitle">Восстановление удалённых переписок Telegram, Instagram, WhatsApp</p>
+
+    <div class="buttons">
+      <a href="https://t.me/yourgroup" target="_blank" class="btn">📡 Перейти в Telegram</a>
+      <a href="#services" class="btn outline">👁 Подробнее об услугах</a>
+    </div>
+
+    <div id="services" class="services">
+      <h2>Наши услуги</h2>
+      <ul>
+        <li>🔎 Восстановление удалённых сообщений</li>
+        <li>🧠 Извлечение резервных копий</li>
+        <li>💬 Реконструкция чатов Telegram, Instagram, WhatsApp</li>
+        <li>🕵️ Анонимность и конфиденциальность гарантированы</li>
+      </ul>
+      <p>Наша команда помогает восстановить переписки, даже если они были удалены много месяцев назад. Истории клиентов говорят сами за себя:</p>
+      <blockquote>"Благодаря BlackTrace я вернула важные доказательства для суда. Профессионалы!"</blockquote>
+      <blockquote>"Не верил, но они реально восстановили мой старый чат в WhatsApp!"</blockquote>
+      <img src="assets/img/hacker-screen.jpg" class="service-img" alt="Hacker screen">
+    </div>
+
+    <div id="reviews" class="services">
+      <h2>Отзывы клиентов</h2>
+      <ul>
+        <li>💬 "Отличная работа! Быстро, безопасно, эффективно." — Аноним</li>
+        <li>💬 "Сомневался, но результат впечатлил." — Клиент из Москвы</li>
+        <li>💬 "Порекомендую друзьям. Спасибо за профессионализм!" — Доверенный клиент</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 BlackTrace. Все права защищены. | Создано с помощью <a href="https://gptonline.ai" target="_blank">GPTonline.ai</a></p>
+  </footer>
+</body>
+</html>
