@@ -26,7 +26,7 @@ magneticHover('.btn');
 magneticHover('.logo');
 
 // Добавим звук клика клавиши
-const clickSound = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_9123a0bc1b.mp3');
+const clickSound = new Audio('assets/img/sound.mp3');
 
 const addClickSound = (selector) => {
   document.querySelectorAll(selector).forEach(el => {
