@@ -30,7 +30,7 @@ const addHapticFeedback = (selector) => {
   document.querySelectorAll(selector).forEach(el => {
     el.addEventListener('click', () => {
       if (navigator.vibrate) {
-        navigator.vibrate(15); // лёгкая вибрация
+        navigator.vibrate(30); // лёгкая вибрация
       }
     });
   });
