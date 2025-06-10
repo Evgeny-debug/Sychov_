@@ -25,6 +25,21 @@ const magneticHover = (selector) => {
 magneticHover('.btn');
 magneticHover('.logo');
 
+// Добавим звук клика клавиши
+const clickSound = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_9123a0bc1b.mp3');
+
+const addClickSound = (selector) => {
+  document.querySelectorAll(selector).forEach(el => {
+    el.addEventListener('click', () => {
+      clickSound.currentTime = 0;
+      clickSound.play();
+    });
+  });
+};
+
+addClickSound('.btn');
+addClickSound('nav a');
+
 // Печатающийся текст: только "BlackTrace", иконка отдельно
 const typingEffect = (el, text, speed = 60) => {
   let i = 0;
