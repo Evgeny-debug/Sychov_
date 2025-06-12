@@ -1,5 +1,8 @@
+// script.js
+
 function closeIntro() {
   document.getElementById('introOverlay').style.display = 'none';
+  document.querySelector('.logo').classList.add('logo-small');
 }
 
 function toggleMenu() {
@@ -7,7 +10,6 @@ function toggleMenu() {
   nav.classList.toggle('show');
 }
 
-// Магнитный эффект при наведении
 const magneticHover = (selector) => {
   document.querySelectorAll(selector).forEach(el => {
     el.addEventListener('mousemove', e => {
@@ -25,13 +27,10 @@ const magneticHover = (selector) => {
 magneticHover('.btn');
 magneticHover('.logo');
 
-// Виброотклик вместо звука клика
 const addHapticFeedback = (selector) => {
   document.querySelectorAll(selector).forEach(el => {
     el.addEventListener('click', () => {
-      if (navigator.vibrate) {
-        navigator.vibrate(30); // лёгкая вибрация
-      }
+      if (navigator.vibrate) navigator.vibrate(30);
     });
   });
 };
@@ -39,10 +38,6 @@ const addHapticFeedback = (selector) => {
 addHapticFeedback('.btn');
 addHapticFeedback('nav a');
 
-addClickSound('.btn');
-addClickSound('nav a');
-
-// Печатающийся текст: только "BlackTrace", иконка отдельно
 const typingEffect = (el, text, speed = 60) => {
   let i = 0;
   const cursor = document.createElement('span');
@@ -64,17 +59,11 @@ const typingEffect = (el, text, speed = 60) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Создание адаптивной кнопки Telegram
-  const telegramBtn = document.createElement('a');
-  telegramBtn.href = 't.me/vanek_nikolaev';
-  telegramBtn.className = 'floating-telegram-btn';
-  telegramBtn.innerHTML = '📨 Заказать в Telegram';
-  telegramBtn.target = '_blank';
-document.body.appendChild(telegramBtn);
   const title = document.querySelector('.title');
-  const icon = document.createElement('span');
-  icon.textContent = '👁‍🗨';
-  icon.style.marginRight = '8px';
+  const icon = document.createElement('img');
+  icon.src = 'assets/img/logo.png';
+  icon.alt = 'BlackTrace Eye Logo';
+  icon.className = 'inline-logo';
 
   const textContainer = document.createElement('span');
   title.textContent = '';
@@ -83,11 +72,9 @@ document.body.appendChild(telegramBtn);
 
   typingEffect(textContainer, 'BlackTrace');
 
-  // Анимированные частицы фона
   const canvas = document.createElement('canvas');
   canvas.id = 'particles';
   document.body.appendChild(canvas);
-
   const ctx = canvas.getContext('2d');
   let particles = [];
   const mouse = { x: null, y: null };
@@ -109,8 +96,8 @@ document.body.appendChild(telegramBtn);
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       r: Math.random() * 2 + 0.5,
-      dx: (Math.random() - 0.5) * 1,
-      dy: (Math.random() - 0.5) * 1,
+      dx: (Math.random() - 0.5),
+      dy: (Math.random() - 0.5)
     });
   }
 
@@ -139,7 +126,5 @@ document.body.appendChild(telegramBtn);
   }
   draw();
 
-  // Анимация логотипа
-  const logo = document.querySelector('.logo');
-  logo.classList.add('animated-logo');
+  document.querySelector('.logo').classList.add('animated-logo');
 });
