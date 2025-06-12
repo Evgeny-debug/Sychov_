@@ -1,130 +1,284 @@
-// script.js
+/* style.css */
 
-function closeIntro() {
-  document.getElementById('introOverlay').style.display = 'none';
-  document.querySelector('.logo').classList.add('logo-small');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Share Tech Mono', monospace;
+  background-color: #000;
+  color: #00ff88;
+  overflow-x: hidden;
 }
 
-function toggleMenu() {
-  const nav = document.getElementById('navMenu');
-  nav.classList.toggle('show');
+.cursor {
+  display: inline-block;
+  color: #00ff88;
+  animation: blink 0.7s steps(1) infinite;
+  margin-left: 2px;
 }
 
-const magneticHover = (selector) => {
-  document.querySelectorAll(selector).forEach(el => {
-    el.addEventListener('mousemove', e => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      el.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
-    });
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = 'translate(0, 0)';
-    });
-  });
-};
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
 
-magneticHover('.btn');
-magneticHover('.logo');
+.animated-logo {
+  animation: logoPulse 3s ease-in-out infinite;
+}
 
-const addHapticFeedback = (selector) => {
-  document.querySelectorAll(selector).forEach(el => {
-    el.addEventListener('click', () => {
-      if (navigator.vibrate) navigator.vibrate(30);
-    });
-  });
-};
+.logo-small {
+  height: 30px;
+  transition: transform 0.3s ease;
+}
 
-addHapticFeedback('.btn');
-addHapticFeedback('nav a');
+.inline-logo {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
 
-const typingEffect = (el, text, speed = 60) => {
-  let i = 0;
-  const cursor = document.createElement('span');
-  cursor.className = 'cursor';
-  cursor.textContent = '|';
-  el.textContent = '';
-  el.appendChild(cursor);
+@keyframes logoPulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
 
-  const type = () => {
-    if (i < text.length) {
-      cursor.insertAdjacentText('beforebegin', text.charAt(i));
-      i++;
-      setTimeout(type, speed);
-    } else {
-      cursor.remove();
-    }
-  };
-  type();
-};
+canvas#particles {
+  position: fixed;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-  const title = document.querySelector('.title');
-  const icon = document.createElement('img');
-  icon.src = 'assets/img/logo.png';
-  icon.alt = 'BlackTrace Eye Logo';
-  icon.className = 'inline-logo';
+.intro-overlay {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
-  const textContainer = document.createElement('span');
-  title.textContent = '';
-  title.appendChild(icon);
-  title.appendChild(textContainer);
+.intro-content {
+  text-align: center;
+  max-width: 90%;
+  color: #00ff88;
+}
 
-  typingEffect(textContainer, 'BlackTrace');
+.intro-content .logo {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
 
-  const canvas = document.createElement('canvas');
-  canvas.id = 'particles';
-  document.body.appendChild(canvas);
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  const mouse = { x: null, y: null };
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 136, 0.03),
+    rgba(0, 255, 136, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  z-index: -1;
+}
 
-  window.addEventListener('mousemove', e => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: rgba(0, 255, 136, 0.1);
+  border-bottom: 1px solid #00ff88;
+  position: relative;
+}
 
-  const resize = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  };
-  window.addEventListener('resize', resize);
-  resize();
+.logo {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
 
-  for (let i = 0; i < 100; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 2 + 0.5,
-      dx: (Math.random() - 0.5),
-      dy: (Math.random() - 0.5)
-    });
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.nav a {
+  color: #00ff88;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: #00cc6a;
+}
+
+.burger {
+  display: none;
+  font-size: 2em;
+  color: #00ff88;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.title {
+  font-size: 3em;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.subtitle {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 25px;
+  font-size: 1em;
+  color: #000;
+  background-color: #00ff88;
+  border: none;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px #00ff88;
+}
+
+.btn:hover {
+  background-color: #00cc6a;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00ff88;
+}
+
+.btn.outline {
+  background-color: transparent;
+  border: 2px solid #00ff88;
+  color: #00ff88;
+}
+
+.btn.outline:hover {
+  background-color: #002f1f;
+}
+
+.services {
+  margin-top: 60px;
+  text-align: left;
+  padding: 20px;
+  border: 1px dashed #00ff88;
+  background: rgba(0, 255, 136, 0.05);
+}
+
+.services h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.services ul {
+  list-style: none;
+  padding: 0;
+}
+
+.services li {
+  margin-bottom: 10px;
+}
+
+.service-img {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 1px solid #00ff88;
+}
+
+.footer-note {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #00ff88;
+  margin-top: 40px;
+  font-size: 0.9em;
+  background-color: rgba(0, 255, 136, 0.1);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    background-color: #000;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    width: 200px;
+    border: 1px solid #00ff88;
+    padding: 15px;
   }
 
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#00ff88';
-    for (let p of particles) {
-      const dx = mouse.x - p.x;
-      const dy = mouse.y - p.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 100) {
-        p.x -= dx * 0.01;
-        p.y -= dy * 0.01;
-      }
-      p.x += p.dx;
-      p.y += p.dy;
-
-      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    requestAnimationFrame(draw);
+  .nav.show {
+    display: flex;
   }
-  draw();
 
-  document.querySelector('.logo').classList.add('animated-logo');
-});
+  .burger {
+    display: block;
+  }
+
+  .title {
+    flex-direction: column;
+  }
+
+  .inline-logo {
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    height: 32px;
+    width: 32px;
+  }
+
+  .intro-content .logo {
+    width: 60px;
+    height: 60px;
+  }
+}
