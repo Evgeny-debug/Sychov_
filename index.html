@@ -1,31 +1,72 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BlackTrace | Восстановление переписок</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
   <script defer src="assets/js/script.js"></script>
+  <style>
+    .intro-logo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .intro-logo {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    .intro-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      z-index: 9999;
+    }
+
+    .intro-content {
+      max-width: 90%;
+      padding: 20px;
+    }
+
+    .intro-description {
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+  </style>
 </head>
 <body>
   <!-- Экран приветствия -->
   <div class="intro-overlay" id="introOverlay">
     <div class="intro-content">
-      <img src="assets/img/logo.png" alt="BlackTrace logo" class="intro-logo" id="introLogo" />
+      <img src="assets/img/logo.png" alt="BlackTrace logo" class="intro-logo" id="introLogo">
       <h1>Добро пожаловать в BlackTrace</h1>
-      <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-        <p>IT-специалист | Восстановление переписок, доступ к соцсетям, поиск утерянных и украденных устройств. Конфиденциально.</p>
-      </div>
+      <p class="intro-description">IT-специалист | Восстановление переписок, доступ к соцсетям, поиск утерянных и украденных устройств. Конфиденциально.</p>
       <div class="buttons">
         <a href="https://t.me/vladimir8822" target="_blank" class="btn">Перейти в Telegram</a>
-        <button class="btn outline" onclick="closeIntro()">Остаться на сайте</button>
+        <button class="btn outline" onclick="document.getElementById('introOverlay').style.display = 'none';">Остаться на сайте</button>
       </div>
     </div>
   </div>
 
   <div class="overlay"></div>
+
   <header class="header">
-    <img src="assets/img/logo.png" alt="Логотип" class="logo" />
+    <img src="assets/img/logo.png" alt="Логотип" class="logo">
     <nav class="nav" id="navMenu">
       <a href="#home">Главная</a>
       <a href="#services">Услуги</a>
@@ -63,7 +104,7 @@
       <h2>Отзывы клиентов</h2>
       <ul>
         <li>💬 "Отличная работа! Быстро, безопасно, эффективно." — Аноним</li>
-        <li>💬 "До сих пор не верю! 2 месяца назад у меня украли телефон — команда получила удалённый доступ и вычислила вора."</li>
+        <li>💬 "До сих пор не верю! 2 месяца назад у меня украли телефон — команда получила удалённый доступ и вычислила вора." — Николь</li>
         <li>💬 "Сомневался, но результат впечатлил." — Артём</li>
         <li>💬 "Порекомендую друзьям. Спасибо за профессионализм!" — Доверенный клиент</li>
       </ul>
