@@ -78,6 +78,8 @@ canvas#particles {
 .intro-content .logo {
   width: 80px;
   height: 80px;
+  max-width: 30vw;
+  max-height: 30vw;
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 20px;
@@ -280,5 +282,7 @@ canvas#particles {
   .intro-content .logo {
     width: 60px;
     height: 60px;
+    max-width: 25vw;
+    max-height: 25vw;
   }
 }
