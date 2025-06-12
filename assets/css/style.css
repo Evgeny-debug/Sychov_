@@ -75,6 +75,14 @@ canvas#particles {
   color: #00ff88;
 }
 
+.intro-content .logo {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -267,5 +275,10 @@ canvas#particles {
   .logo {
     height: 32px;
     width: 32px;
+  }
+
+  .intro-content .logo {
+    width: 60px;
+    height: 60px;
   }
 }
