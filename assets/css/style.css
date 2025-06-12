@@ -33,8 +33,12 @@ body {
 
 .inline-logo {
   height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
   vertical-align: middle;
   margin-right: 10px;
+  transition: transform 0.3s ease;
 }
 
 @keyframes logoPulse {
@@ -99,6 +103,9 @@ canvas#particles {
 
 .logo {
   height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
   transition: transform 0.3s ease;
 }
 
@@ -255,5 +262,10 @@ canvas#particles {
 
   .inline-logo {
     margin-bottom: 10px;
+  }
+
+  .logo {
+    height: 32px;
+    width: 32px;
   }
 }
